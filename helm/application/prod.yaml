@@ -1,0 +1,36 @@
+environment: "prod"
+serviceAccountName: devstream-sa
+createIngress: false
+
+net:
+  host: "api-prod.devstream.dsgov.demo.nuvalence.io"
+
+env:
+  ALLOWED_ORIGINS: "https://api-prod.devstream.dsgov.demo.nuvalence.io https://agency-prod.devstream.dsgov.demo.nuvalence.io https://public-prod.devstream.dsgov.demo.nuvalence.io"
+  CERBOS_URI: "127.0.0.1:3592"
+  DB_CONNECTION_URL: "jdbc:postgresql://127.0.0.1:5432/devstream-prod-notification-service-db"
+  DB_USERNAME: "${sm://projects/devstream-prod/secrets/devstream-prod-db-user/versions/latest}"
+  DB_PASSWORD: "${sm://projects/devstream-prod/secrets/devstream-prod-db-pass/versions/latest}"
+  EMAIL_ACCOUNT_SENDER: ""
+  EMAIL_NAME_SENDER: ""
+  GCP_PROJECT_ID: "devstream-prod"
+  SENDGRID_API_KEY: "TODO"
+  SELF_SIGN_PUBLIC_KEY: "${sm://projects/devstream-prod/secrets/devstream-self-signed-token-public-key/versions/latest}"
+  SELF_SIGN_PRIVATE_KEY: "${sm://projects/devstream-prod/secrets/devstream-self-signed-token-private-key/versions/latest}"
+  USER_MANAGEMENT_BASE_URL: "http://devstream-user-management/um"
+  PUB_SUB_TOPIC: "projects/devstream-prod/topics/NOTIFICATION_MSG_QUEUE"
+  DEAD_LETTER_TOPIC: "projects/devstream-prod/topics/NOTIFICATION_DEAD_LETTER"
+  PUB_SUB_TOPIC_SUBSCRIPTION: "projects/devstream-prod/subscriptions/NOTIFICATION_MSG_QUEUE_SUBSCRIPTION"
+  PUBSUB_EMULATOR_HOST: false # set actual "host:port" to enable or false to disable
+  PUBSUB_ENABLED: true
+  PUBSUB_CREATE_TOPIC: false
+  TOKEN_ISSUER: "devstream"
+  TOKEN_PRIVATE_KEY_VERSION: "latest"
+  TWILIO_ACCOUNT_SID: "${sm://projects/devstream-prod/secrets/devstream-twilio-account-sid/versions/latest}"
+  TWILIO_AUTH_TOKEN: "${sm://projects/devstream-prod/secrets/devstream-twilio-auth-token/versions/latest}"
+  TWILIO_PHONE_NUMBER: "${sm://projects/devstream-prod/secrets/devstream-twilio-sender-number/versions/latest}"
+  SEND_GRID_EMAIL_CONTENT_TYPE: "text/html"
+  SEND_GRID_EMAIL_ENDPOINT: "mail/send"
+  SEND_GRID_API_KEY: "${sm://projects/devstream-prod/secrets/devstream-sendgrid-api-key/versions/latest}"
+  SEND_GRID_SENDER: "${sm://projects/devstream-prod/secrets/devstream-sendgrid-sender-email/versions/latest}"
+  OTEL_SAMPLER_PROBABILITY: 1.0 # valid values: [0.0 - 1.0]
