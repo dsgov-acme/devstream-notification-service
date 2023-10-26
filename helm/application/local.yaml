@@ -12,6 +12,14 @@ postgres:
     POSTGRES_PORT: 5432
     POSTGRES_USER: "root"
 
+resources:
+  pubSubEmulator:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+
 net:
   host: "api.devstream.test"
 
@@ -23,22 +31,22 @@ env:
   EMAIL_ACCOUNT_SENDER: ""
   EMAIL_NAME_SENDER: ""
   CERBOS_URI: "127.0.0.1:3592"
-  GCP_PROJECT_ID: "devstream-dev"
-  SELF_SIGN_PUBLIC_KEY: "${sm://projects/devstream-dev/secrets/devstream-self-signed-token-public-key/versions/latest}"
-  SELF_SIGN_PRIVATE_KEY: "${sm://projects/devstream-dev/secrets/devstream-self-signed-token-private-key/versions/latest}"
+  GCP_PROJECT_ID: "devstream-dev-2e76"
+  SELF_SIGN_PUBLIC_KEY: "${sm://projects/devstream-dev-2e76/secrets/devstream-self-signed-token-public-key/versions/latest}"
+  SELF_SIGN_PRIVATE_KEY: "${sm://projects/devstream-dev-2e76/secrets/devstream-self-signed-token-private-key/versions/latest}"
   USER_MANAGEMENT_BASE_URL: "http://user-management/um"
-  PUB_SUB_TOPIC: "projects/devstream-dev/topics/NOTIFICATION_MSG_QUEUE"
-  DEAD_LETTER_TOPIC: "projects/devstream-dev/topics/NOTIFICATION_DEAD_LETTER"
-  PUB_SUB_TOPIC_SUBSCRIPTION: "projects/devstream-dev/subscriptions/NOTIFICATION_MSG_QUEUE_SUBSCRIPTION"
+  PUB_SUB_TOPIC: "projects/devstream-dev-2e76/topics/NOTIFICATION_MSG_QUEUE"
+  DEAD_LETTER_TOPIC: "projects/devstream-dev-2e76/topics/NOTIFICATION_DEAD_LETTER"
+  PUB_SUB_TOPIC_SUBSCRIPTION: "projects/devstream-dev-2e76/subscriptions/NOTIFICATION_MSG_QUEUE_SUBSCRIPTION"
   PUBSUB_EMULATOR_HOST: "pubsub-emulator-service:8085"
   PUBSUB_ENABLED: true
   PUBSUB_CREATE_TOPIC: true
   TOKEN_ISSUER: "devstream"
   TOKEN_PRIVATE_KEY_VERSION: "latest"
-  TWILIO_ACCOUNT_SID: "${sm://projects/devstream-dev/secrets/devstream-twilio-account-sid/versions/latest}"
-  TWILIO_AUTH_TOKEN: "${sm://projects/devstream-dev/secrets/devstream-twilio-auth-token/versions/latest}"
-  TWILIO_PHONE_NUMBER: "${sm://projects/devstream-dev/secrets/devstream-twilio-sender-number/versions/latest}"
+  TWILIO_ACCOUNT_SID: "${sm://projects/devstream-dev-2e76/secrets/devstream-twilio-account-sid/versions/latest}"
+  TWILIO_AUTH_TOKEN: "${sm://projects/devstream-dev-2e76/secrets/devstream-twilio-auth-token/versions/latest}"
+  TWILIO_PHONE_NUMBER: "${sm://projects/devstream-dev-2e76/secrets/devstream-twilio-sender-number/versions/latest}"
   SEND_GRID_EMAIL_CONTENT_TYPE: "text/html"
   SEND_GRID_EMAIL_ENDPOINT: "mail/send"
-  SEND_GRID_API_KEY: "${sm://projects/devstream-dev/secrets/devstream-sendgrid-api-key/versions/latest}"
-  SEND_GRID_SENDER: "${sm://projects/devstream-dev/secrets/devstream-sendgrid-sender-email/versions/latest}"
+  SEND_GRID_API_KEY: "${sm://projects/devstream-dev-2e76/secrets/devstream-sendgrid-api-key/versions/latest}"
+  SEND_GRID_SENDER: "${sm://projects/devstream-dev-2e76/secrets/devstream-sendgrid-sender-email/versions/latest}"
